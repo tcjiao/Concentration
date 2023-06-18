@@ -1,73 +1,52 @@
-/*----- constants -----*/
-const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+/*----- Constants -----*/
+const symbols = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
 
-/*----- app's state (variables) -----*/
+/*----- App State -----*/
 let flippedCards = [];
 let movesCount;
 let timer;
-let seconds=30;
+let seconds = 60;
 let badGuessesCount;
 let wrongGuessTimeout;
-/*----- cached element references -----*/
+
+/*----- Cached Elements -----*/
 const gameBoard = document.querySelector('.game-board');
 const movesCounter = document.getElementById('moves-counter');
 const timerDisplay = document.getElementById('timer');
 const badGuessesDisplay = document.getElementById('bad-guesses');
 const startButton = document.getElementById('start-btn');
 
-/*----- event listeners -----*/
+/*----- Event Listeners -----*/
 startButton.addEventListener('click', startGame);
-gameBoard.addEventListener('click', showWrongGuess);
-gameBoard.addEventListener('click', updateMovesCounter);
+gameBoard.addEventListener('click', handleCardClick);
 
+/*----- Functions -----*/
 
-/*----- functions -----*/
+// Initialize the game
+function startGame() {
+  init();
+  startTimer();
+}
 
-init();
-
+// Initialize game state and create game board
 function init() {
-  const shuffledSymbols = shuffle(symbols);
+  movesCount = 0;
+  badGuessesCount = 0;
+  flippedCards = [];
 
+  const shuffledSymbols = shuffle(symbols);
   gameBoard.innerHTML = "";
 
   for (let i = 0; i < 16; i++) {
     const symbol = shuffledSymbols[i];
     const card = createCard(symbol);
     gameBoard.appendChild(card);
-    badGuessesCount = 0;
-    incrementMovesCount();
   }
 
-  startTimer();
+  updateMovesCounter();
 }
 
-function updateMovesCounter() {
-    movesCount++;
-    movesCounter.textContent = `Moves: ${movesCount}`;
-    if (movesCount === 1) {
-        restartTimer();
-      }
-  }
-
-  function restartTimer() {
-    clearInterval(timer);
-    seconds = 30;
-    timerDisplay.textContent = `Time: ${seconds}s`;
-    startTimer();
-  }
-
-  function startTimer() {
-    timer = setInterval(() => {
-      seconds--;
-      timerDisplay.textContent = `Time: ${seconds}s`;
-  
-      if (seconds === 0) {
-        clearInterval(timer);
-        gameOver(false);
-      }
-    }, 1000);
-  }
-
+// Create a card element
 function createCard(symbol) {
   const card = document.createElement("div");
   card.className = "card";
@@ -86,74 +65,113 @@ function createCard(symbol) {
   return card;
 }
 
-function showWrongGuess() {
-    clearTimeout(wrongGuessTimeout);
-    badGuessesDisplay.textContent = 'Wrong Guess!';
-    wrongGuessTimeout = setTimeout(() => {
-      badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
-    }, 1000);
-  }
-
-function updateBadGuessesCount() {
-    badGuessesCount++;
-    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
-  }
-
+// Flip a card
 function flipCard() {
-  if (!flippedCards.includes(this) && flippedCards.length < 2) {
-    this.classList.add("flipped");
-    flippedCards.push(this);
+  if (flippedCards.length >= 2) return;
 
-    if (flippedCards.length === 2) {
-      setTimeout(checkForMatch, 1000);
-      incrementMovesCount();
-    }
+  this.classList.add("flipped");
+  flippedCards.push(this);
+
+  if (flippedCards.length === 2) {
+    setTimeout(checkForMatch, 1000);
+    incrementMovesCount();
   }
 }
 
+// Check if flipped cards are a match
+function checkForMatch() {
+  const [card1, card2] = flippedCards;
+
+  if (card1.textContent === card2.textContent) {
+    card1.removeEventListener("click", flipCard);
+    card2.removeEventListener("click", flipCard);
+    checkForWin();
+  } else {
+    card1.classList.remove("flipped");
+    card2.classList.remove("flipped");
+    updateBadGuessesCount();
+
+    if (badGuessesCount >= 10) {
+      gameOver(false);
+    }
+  }
+
+  flippedCards = [];
+}
+
+// Check for win condition
+function checkForWin() {
+  const allCards = document.querySelectorAll(".card");
+  const isGameWon = [...allCards].every((card) => {
+    return !card.classList.contains("flipped");
+  });
+
+  if (isGameWon) {
+    gameOver(true);
+  }
+}
+
+// Increment moves count and update moves counter display
 function incrementMovesCount() {
   movesCount++;
-  const movesCounter = document.getElementById("moves-counter");
   movesCounter.textContent = `Moves: ${movesCount}`;
+
+  if (movesCount === 1) {
+    restartTimer();
+  }
 }
 
-function checkForMatch() {
-    const card1 = flippedCards[0];
-    const card2 = flippedCards[1];
-  
-    if (card1.textContent === card2.textContent) {
-      card1.removeEventListener('click', flipCard);
-      card2.removeEventListener('click', flipCard);
-    } else {
-      card1.classList.remove('flipped');
-      card2.classList.remove('flipped');
-      updateBadGuessesCount();
+// Update bad guesses count and display wrong guess message
+function updateBadGuessesCount() {
+  badGuessesCount++;
+  badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+  showWrongGuess();
+}
 
-      if (badGuessesCount >= 10) { 
-        gameOver(false);
-      }
+// Show wrong guess message
+function showWrongGuess() {
+  clearTimeout(wrongGuessTimeout);
+  badGuessesDisplay.textContent = "Wrong Guess!";
+  wrongGuessTimeout = setTimeout(() => {
+    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+  }, 1000);
+}
+
+// Start the countdown timer
+function startTimer() {
+  timer = setInterval(() => {
+    seconds--;
+
+    if (seconds === 0) {
+      gameOver(false);
     }
-  
-    flippedCards = [];
-  }
 
-  function gameOver(hasWon) {
-    clearInterval(timer);
-    console.log(hasWon ? 'You won!' : 'You lost!');
-  }
-
-  function startGame() {
-    clearInterval(timer);
-    init();
-    startTimer();
-  }
-
-function render() {
-  gameBoard.innerHTML = "";
-
-  init();
+    timerDisplay.textContent = `Time: ${seconds}s`;
+  }, 1000);
 }
 
+// Restart the countdown timer
+function restartTimer() {
+  clearInterval(timer);
+  seconds = 60;
+  timerDisplay.textContent = `Time: ${seconds}s`;
+  startTimer();
+}
+
+// Game over function
+function gameOver(hasWon) {
+  clearInterval(timer);
+
+  const resultMessage = document.getElementById("result-message");
+
+  if (hasWon) {
+    resultMessage.innerText = "Congratulations! You won!";
+  } else {
+    resultMessage.innerText = "Game over! You lost!";
+  }
+}
+
+// Helper function to shuffle an array
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -161,4 +179,3 @@ function shuffle(array) {
   }
   return array;
 }
-
