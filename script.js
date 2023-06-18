@@ -106,7 +106,7 @@ function flipCard() {
 
     if (flippedCards.length === 2) {
       setTimeout(checkForMatch, 1000);
-      incrementMovesCount(); // Increment move count
+      incrementMovesCount();
     }
   }
 }
@@ -128,8 +128,8 @@ function checkForMatch() {
       card1.classList.remove('flipped');
       card2.classList.remove('flipped');
       updateBadGuessesCount();
-      // Check if the player has lost based on the number of bad guesses
-      if (badGuessesCount >= 10) { // Replace X with the desired number of bad guesses
+
+      if (badGuessesCount >= 10) { 
         gameOver(false);
       }
     }
@@ -149,10 +149,8 @@ function checkForMatch() {
   }
 
 function render() {
-  // Clear the game board
   gameBoard.innerHTML = "";
 
-  // Call init to reinitialize the game board
   init();
 }
 
