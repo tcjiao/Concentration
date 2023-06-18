@@ -1,0 +1,55 @@
+.container {
+  text-align: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  height: 100px;
+  background-color: #ddd;
+  position: relative;
+  cursor: pointer;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.card-front {
+  opacity: 0;
+}
+
+.flipped .card-front {
+  opacity: 1;
+}
+
+.flipped {
+  background-color: #fff;
+}
+
+.game-info {
+  margin-top: 20px;
+}
+
+#moves-counter,
+#timer,
+#bad-guesses {
+  margin-bottom: 10px;
+}
