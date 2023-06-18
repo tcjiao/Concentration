@@ -1,5 +1,5 @@
 /*----- Constants -----*/
-const symbols = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
+const symbols = ['imgs/1.png', 'imgs/1.png', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
 
 /*----- App State -----*/
 let flippedCards = [];
@@ -65,6 +65,9 @@ function createCard(symbol) {
   return card;
 }
 
+
+
+
 // Flip a card
 function flipCard() {
   if (flippedCards.length >= 2) return;
@@ -77,6 +80,7 @@ function flipCard() {
     incrementMovesCount();
   }
 }
+
 
 // Check if flipped cards are a match
 function checkForMatch() {
