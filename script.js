@@ -1,5 +1,5 @@
 /*----- Constants -----*/
-const symbols = ['imgs/1.png', 'imgs/1.png', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
+const symbols = ['imgs/1.png', 'imgs/1.png', 'imgs/2.png', 'imgs/2.png', 'imgs/3.png', 'imgs/3.png', 'imgs/4.png', 'imgs/4.png', 'imgs/5.png', 'imgs/5.png', 'imgs/6.png', 'imgs/6.png', 'imgs/7.png', 'imgs/7.png', 'imgs/8.png', 'imgs/8.png'];
 
 /*----- App State -----*/
 let flippedCards = [];
@@ -54,6 +54,8 @@ function createCard(symbol) {
   const cardFront = document.createElement("div");
   cardFront.className = "card-front";
   cardFront.textContent = symbol;
+  cardFront.style.backgroundImage = `url(${symbol})`;
+
 
   const cardBack = document.createElement("div");
   cardBack.className = "card-back";
