@@ -172,8 +172,10 @@ function gameOver(hasWon) {
 
   if (hasWon) {
     resultMessage.innerText = "Congratulations! You won!";
+    resultMessage.style.color = 'green';
   } else {
     resultMessage.innerText = "Game over! You lost!";
+    resultMessage.style.color = 'red';
   }
 }
 
