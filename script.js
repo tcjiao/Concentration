@@ -18,7 +18,6 @@ const startButton = document.getElementById('start-btn');
 
 /*----- Event Listeners -----*/
 startButton.addEventListener('click', startGame);
-gameBoard.addEventListener('click', handleCardClick);
 
 /*----- Functions -----*/
 
@@ -42,8 +41,6 @@ function init() {
     const card = createCard(symbol);
     gameBoard.appendChild(card);
   }
-
-  updateMovesCounter();
 }
 
 // Create a card element
@@ -96,26 +93,33 @@ function checkForMatch() {
     card1.classList.remove("flipped");
     card2.classList.remove("flipped");
     updateBadGuessesCount();
-
+    
     if (badGuessesCount >= 10) {
       gameOver(false);
     }
   }
-
+  
   flippedCards = [];
 }
 
 // Check for win condition
 function checkForWin() {
-  const allCards = document.querySelectorAll(".card");
-  const isGameWon = [...allCards].every((card) => {
-    return !card.classList.contains("flipped");
-  });
+  // const allCards = document.querySelectorAll(".card");
+  // const isGameWon = [...allCards].every((card) => {
+  //   return !card.classList.contains("flipped");
+  // });
+  const matchedPairs = document.querySelectorAll('.flipped').length / 2;
+  const totalPairs = symbols.length / 2;
 
-  if (isGameWon) {
+  if (matchedPairs === totalPairs) {
     gameOver(true);
   }
+  // if (isGameWon) {
+    // gameOver(true);
+  // }
 }
+
+
 
 // Increment moves count and update moves counter display
 function incrementMovesCount() {
