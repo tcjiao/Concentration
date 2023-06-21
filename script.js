@@ -69,7 +69,7 @@ function createCard(symbol) {
 
 // Flip a card
 function flipCard() {
-  if (flippedCards.length >= 2) return;
+  if (flippedCards.length >= 2 || this.classList.contains("flipped")) return;
 
   this.classList.add("flipped");
   flippedCards.push(this);
