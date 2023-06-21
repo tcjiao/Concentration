@@ -88,7 +88,11 @@ function checkForMatch() {
   if (card1.textContent === card2.textContent) {
     card1.removeEventListener("click", flipCard);
     card2.removeEventListener("click", flipCard);
+    card1.classList.add("paired");
+    card2.classList.add("paired");
+    showPairedMessage();
     checkForWin();
+
   } else {
     card1.classList.remove("flipped");
     card2.classList.remove("flipped");
@@ -104,19 +108,12 @@ function checkForMatch() {
 
 // Check for win condition
 function checkForWin() {
-  // const allCards = document.querySelectorAll(".card");
-  // const isGameWon = [...allCards].every((card) => {
-  //   return !card.classList.contains("flipped");
-  // });
   const matchedPairs = document.querySelectorAll('.flipped').length / 2;
   const totalPairs = symbols.length / 2;
 
   if (matchedPairs === totalPairs) {
     gameOver(true);
   }
-  // if (isGameWon) {
-    // gameOver(true);
-  // }
 }
 
 
@@ -142,8 +139,20 @@ function updateBadGuessesCount() {
 function showWrongGuess() {
   clearTimeout(wrongGuessTimeout);
   badGuessesDisplay.textContent = "Wrong Guess!";
+  badGuessesDisplay.style.color = 'red';
   wrongGuessTimeout = setTimeout(() => {
     badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+    badGuessesDisplay.style.color = '';
+  }, 1000);
+}
+
+// Show paired card message
+function showPairedMessage() {
+  badGuessesDisplay.textContent = "Cards Paired!";
+  badGuessesDisplay.style.color = 'green';
+  setTimeout(() => {
+    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+    badGuessesDisplay.style.color = '';
   }, 1000);
 }
 
