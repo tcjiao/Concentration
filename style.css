@@ -1,13 +1,27 @@
 * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-  
   }
   
+  h1 {
+    font-size: 50px;
+  }
+
   .container {
     text-align: center;
   }
   
+  .info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 390px;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+
   div {
     font-weight: 800;
   }
