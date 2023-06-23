@@ -34,6 +34,7 @@ function init() {
   movesCount = 0;
   badGuessesCount = 0;
   flippedCards = [];
+  startButton.innerText = "Reset";
 
   const shuffledSymbols = shuffle(symbols);
   gameBoard.innerHTML = "";
