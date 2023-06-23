@@ -8,6 +8,7 @@ let timer;
 let seconds = 60;
 let badGuessesCount;
 let wrongGuessTimeout;
+let gameEnded = false;
 
 /*----- Cached Elements -----*/
 const gameBoard = document.querySelector('.game-board');
@@ -69,7 +70,7 @@ function createCard(symbol) {
 
 // Flip a card
 function flipCard() {
-  if (flippedCards.length >= 2 || this.classList.contains("flipped")) return;
+  if (flippedCards.length >= 2 || gameEnded || this.classList.contains("flipped")) return;
 
   this.classList.add("flipped");
   flippedCards.push(this);
@@ -180,6 +181,7 @@ function restartTimer() {
 // Game over function
 function gameOver(hasWon) {
   clearInterval(timer);
+  gameEnded = true;
 
   const resultMessage = document.getElementById("result-message");
 

@@ -15,7 +15,7 @@ Click <a href="https://tcjiao.github.io/Concentration/">Here</a> to play!
 
 
 ## Getting Started
-- Click Start Button to start the game.
+- Click the **Start** Button to start the game.
 - Pick two cards on the board and memorize them if they're not the same.
 - Pair all cards and win the game!
 
