@@ -1,5 +1,13 @@
 # Concentration
-A memory game
+This game will test your Concentration!
+
+Memorize the board of cards and try to match pairs as fast as you can and with as few flips as possible.
+
+You can check how many moves you made and how many bad guesses anytime.
+
+If you guess wrong  more than 10 times or time running out, you lose!
+
+Good luck and have fun!
 
 Click <a href="https://tcjiao.github.io/Concentration/">Here</a> to play!
 
