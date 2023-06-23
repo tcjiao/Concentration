@@ -3,8 +3,13 @@
     font-family: 'Open Sans', sans-serif;
   }
   
-  h1 {
-    font-size: 50px;
+  h1 { 
+    color: #595f87;
+    font-family: 'Rouge Script', cursive; font-size: 50px; 
+    font-weight: normal; 
+    line-height: 48px; margin: 50px 0 50px 0 ; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #082b34; 
   }
 
   .container {
@@ -17,10 +22,9 @@
     justify-content: space-between;
     padding: 0 65vmin;
     margin: 0 0 10px 0;
-    letter-spacing: 1px;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 20px; 
+    font-weight: 700; 
   }
 
 
@@ -95,7 +99,11 @@
   }
   
   #result-message {
-    font-size: 5vmin;
+      color: #595f87;
+      font-size: 40px; 
+      font-weight: normal; 
+      text-align: center; 
+      text-shadow: 1px 1px 2px #082b34; 
   }
   
   #moves-counter,
@@ -106,14 +114,19 @@
   
   button {
     justify-self: center;
-    margin: 2vmin;
     background-color: white;
-    color: black;
     border: 0.2vmin solid black;
     border-radius: 2vmin;
-    font-size: 3vmin;
     outline: none;
-    font-weight: 800;
+    color: #111; 
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 20px; 
+    font-weight: 700; 
+    line-height: 64px; 
+    margin: 15px; 
+    padding: 0px 15px; 
+    text-align: center; 
+    text-transform: uppercase;
   }
   
   button:hover {
