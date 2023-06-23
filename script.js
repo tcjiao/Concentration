@@ -134,7 +134,7 @@ function incrementMovesCount() {
 // Update bad guesses count and display wrong guess message
 function updateBadGuessesCount() {
   badGuessesCount++;
-  badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+  badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
   showWrongGuess();
 }
 
@@ -144,7 +144,7 @@ function showWrongGuess() {
   badGuessesDisplay.textContent = "Wrong Guess!";
   badGuessesDisplay.style.color = 'red';
   wrongGuessTimeout = setTimeout(() => {
-    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
     badGuessesDisplay.style.color = '';
   }, 1000);
 }
@@ -154,7 +154,7 @@ function showPairedMessage() {
   badGuessesDisplay.textContent = "Cards Paired!";
   badGuessesDisplay.style.color = 'green';
   setTimeout(() => {
-    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount}`;
+    badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
     badGuessesDisplay.style.color = '';
   }, 1000);
 }
