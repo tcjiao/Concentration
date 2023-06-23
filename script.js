@@ -26,6 +26,7 @@ startButton.addEventListener('click', startGame);
 function startGame() {
   init();
   startTimer();
+  clearMessage();
 }
 
 // Initialize game state and create game board
@@ -176,6 +177,12 @@ function restartTimer() {
   seconds = 60;
   timerDisplay.textContent = `Time: ${seconds}s`;
   startTimer();
+}
+
+// Clear win/lose message
+function clearMessage() {
+  const resultMessage = document.getElementById("result-message");
+  resultMessage.innerText = "";
 }
 
 // Game over function
