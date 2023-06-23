@@ -24,9 +24,10 @@ startButton.addEventListener('click', startGame);
 
 // Initialize the game
 function startGame() {
+  clearInterval(timer);
+  clearMessage();
   init();
   startTimer();
-  clearMessage();
 }
 
 // Initialize game state and create game board
@@ -35,6 +36,10 @@ function init() {
   badGuessesCount = 0;
   flippedCards = [];
   startButton.innerText = "Reset";
+  seconds = 60;
+  badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
+  movesCounter.textContent = `Moves: ${movesCount}`;
+  badGuessesDisplay.style.color = '';
 
   const shuffledSymbols = shuffle(symbols);
   gameBoard.innerHTML = "";
@@ -145,7 +150,18 @@ function showWrongGuess() {
   badGuessesDisplay.style.color = 'red';
   wrongGuessTimeout = setTimeout(() => {
     badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
-    badGuessesDisplay.style.color = '';
+    if (badGuessesCount >= 5 && badGuessesCount <= 7){
+      badGuessesDisplay.style.color = '#cccc00';
+    }
+    else if (badGuessesCount> 7 && badGuessesCount <= 9){
+      badGuessesDisplay.style.color = 'orange';
+    }
+    else if (badGuessesCount === 10){
+      badGuessesDisplay.style.color = 'red';
+    }
+    else{
+      badGuessesDisplay.style.color = '';
+    }
   }, 1000);
 }
 
@@ -155,7 +171,18 @@ function showPairedMessage() {
   badGuessesDisplay.style.color = 'green';
   setTimeout(() => {
     badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
-    badGuessesDisplay.style.color = '';
+    if (badGuessesCount >= 5 && badGuessesCount <= 7){
+      badGuessesDisplay.style.color = '#cccc00';
+    }
+    else if (badGuessesCount> 7 && badGuessesCount <= 9){
+      badGuessesDisplay.style.color = 'orange';
+    }
+    else if (badGuessesCount === 10){
+      badGuessesDisplay.style.color = 'red';
+    }
+    else{
+      badGuessesDisplay.style.color = '';
+    }
   }, 1000);
 }
 
