@@ -189,7 +189,7 @@ function clearMessage() {
 function gameOver(hasWon) {
   clearInterval(timer);
   gameEnded = true;
-
+  startButton.innerText = "Play again!";
   const resultMessage = document.getElementById("result-message");
 
   if (hasWon) {
