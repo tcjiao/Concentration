@@ -1,5 +1,10 @@
 /*----- Constants -----*/
 const symbols = ['imgs/1.png', 'imgs/1.png', 'imgs/2.png', 'imgs/2.png', 'imgs/3.png', 'imgs/3.png', 'imgs/4.png', 'imgs/4.png', 'imgs/5.png', 'imgs/5.png', 'imgs/6.png', 'imgs/6.png', 'imgs/7.png', 'imgs/7.png', 'imgs/8.png', 'imgs/8.png'];
+const flipAudio = new Audio("Audio/flip.ogg");
+const wrongAudio = new Audio("Audio/wrong.mp3");
+const correctAudio = new Audio("Audio/correct.mp3");
+const winAudio = new Audio("Audio/win.mp3")
+const loseAudio = new Audio("Audio/lose.mp3")
 
 /*----- App State -----*/
 let flippedCards = [];
@@ -28,6 +33,7 @@ function startGame() {
   clearMessage();
   init();
   startTimer();
+  gameEnded = false;
 }
 
 // Initialize game state and create game board
@@ -81,6 +87,8 @@ function flipCard() {
 
   this.classList.add("flipped");
   flippedCards.push(this);
+  flipAudio.currentTime = 0;
+  flipAudio.play();
 
   if (flippedCards.length === 2) {
     setTimeout(checkForMatch, 1000);
@@ -145,10 +153,10 @@ function updateBadGuessesCount() {
 
 // Show wrong guess message
 function showWrongGuess() {
-  clearTimeout(wrongGuessTimeout);
   badGuessesDisplay.textContent = "Wrong Guess!";
   badGuessesDisplay.style.color = 'red';
-  wrongGuessTimeout = setTimeout(() => {
+  wrongAudio.play();
+  setTimeout(() => {
     badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
     if (badGuessesCount >= 5 && badGuessesCount <= 7){
       badGuessesDisplay.style.color = '#cccc00';
@@ -169,6 +177,7 @@ function showWrongGuess() {
 function showPairedMessage() {
   badGuessesDisplay.textContent = "Cards Paired!";
   badGuessesDisplay.style.color = 'green';
+  correctAudio.play();
   setTimeout(() => {
     badGuessesDisplay.textContent = `Bad Guesses: ${badGuessesCount} /10`;
     if (badGuessesCount >= 5 && badGuessesCount <= 7){
@@ -223,9 +232,11 @@ function gameOver(hasWon) {
   if (hasWon) {
     resultMessage.innerText = "Congratulations! You won!";
     resultMessage.style.color = 'green';
+    winAudio.play();
   } else {
     resultMessage.innerText = "Game over! You lost!";
     resultMessage.style.color = 'red';
+    loseAudio.play();
   }
 }
 
