@@ -1,10 +1,10 @@
 <h1 align="center">Concentration</h1>
 
 
-<div style="text-align: center;">
-  <h2>Concentration - A Memory Game</h2>
+<h2 style="text-align: center;">
+  Concentration - A Memory Game
   <font size= "6px"><p><b><a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a></b></p></font>
-</div>
+</h2>
 
 ## 📝 Description
 
