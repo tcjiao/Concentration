@@ -1,8 +1,9 @@
 <h1 align="center">Concentration</h1>
 
-<h2 align= "center"> Concentration - A Memory Game. </h2>
+<center><font size = "6px"> Concentration - A Memory Game. </font></span></center>
 
-<h2 align = "center"><a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a> </h2>
+
+<b><center><font size = "6px"><a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a> </font></span></center></b>
 
 ## 📝 Description
 
