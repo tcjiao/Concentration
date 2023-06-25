@@ -3,7 +3,8 @@
 
 <h2 style="text-align: center;">
   Concentration - A Memory Game
-  <font size= "6px"><p><b><a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a></b></p></font>
+
+  <a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a>
 </h2>
 
 ## 📝 Description
