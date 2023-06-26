@@ -104,8 +104,6 @@ function checkForMatch() {
   if (card1.textContent === card2.textContent) {
     card1.removeEventListener("click", flipCard);
     card2.removeEventListener("click", flipCard);
-    card1.classList.add("paired");
-    card2.classList.add("paired");
     showPairedMessage();
     checkForWin();
 
