@@ -10,8 +10,10 @@
 
 ## 📝 Description
 
-This game will test your Concentration!
+This game will test your Concentration! <br>
 
+
+<br>
 Memorize the board of cards and try to match pairs as fast as you can and with as few flips as possible.
 
 
