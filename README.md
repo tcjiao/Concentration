@@ -4,16 +4,14 @@
 <h2 align="center">
   Concentration - A Memory Game
   <a> </a>
-
+<p style="margin-top: 20px"></p>
   <a href="https://tcjiao.github.io/Concentration/">🚀 🚀 🚀 Play Now 🚀 🚀 🚀</a>
 </h2>
 
 ## 📝 Description
 
-This game will test your Concentration! <br>
+This game will test your Concentration!
 
-
-<br>
 Memorize the board of cards and try to match pairs as fast as you can and with as few flips as possible.
 
 
