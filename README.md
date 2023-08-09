@@ -36,7 +36,7 @@ Memorize the board of cards and try to match pairs as fast as you can and with a
 - Losing condition:
   - Bad guess more than 10 times.
   - Time is out.
-- Play again
+- Play again.
 
 
 ## 🌱 Upcoming Features
